@@ -1,12 +1,12 @@
 import { dbInit } from '@/db/AppDataSource';
-import { addGroupDb } from '@/db/groupDb';
+import { groupService } from '@/services/GroupService';
 
 export async function POST(): Promise<Response> {
   await dbInit();
 
   const newGroups = [];
   for (let i = 1; i <= 4; i++) {
-    const newGroup = await addGroupDb({
+    const newGroup = await groupService.addGroup({
       name: `Group-${i}`,
       contacts: '',
     });

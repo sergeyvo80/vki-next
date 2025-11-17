@@ -1,4 +1,4 @@
-import { deleteStudentDb, getStudentByIdDb } from '@/db/studentDb';
+import { studentService } from '@/services/StudentService';
 import { type NextRequest, NextResponse } from 'next/server';
 import { NextApiResponse, type NextApiRequest } from 'next/types';
 
@@ -9,7 +9,7 @@ interface Params {
 export async function DELETE(req: NextApiRequest, { params }: Params): Promise<Response> {
   const p = await params;
   const studentId = await p.id;
-  const deletedStudentId = await deleteStudentDb(studentId);
+  const deletedStudentId = await studentService.deleteStudent(studentId);
 
   return new Response(JSON.stringify({ deletedStudentId }), {
     headers: {
@@ -29,7 +29,7 @@ export async function GET(
     const studentId = parseInt(id, 10);
     console.log('>>> API GET: Getting student with ID:', studentId);
 
-    const student = await getStudentByIdDb(studentId);
+    const student = await studentService.getStudentById(studentId);
 
     if (!student) {
       console.log('>>> API GET: Student not found');

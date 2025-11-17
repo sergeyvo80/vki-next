@@ -1,8 +1,8 @@
-import { getStudentsDb, addStudentDb } from '@/db/studentDb';
+import { studentService } from '@/services/StudentService';
 import { type NextApiRequest } from 'next/types';
 
 export async function GET(): Promise<Response> {
-  const students = await getStudentsDb();
+  const students = await studentService.getStudents();
 
   return new Response(JSON.stringify(students), {
     headers: {
@@ -16,7 +16,7 @@ export async function POST(req: NextApiRequest): Promise<Response> {
   // @ts-ignore
   const student = await req.json();
   delete student['id'];
-  const newStudent = await addStudentDb(student);
+  const newStudent = await studentService.addStudent(student);
 
   console.log(newStudent);
   return new Response(JSON.stringify(newStudent), {
