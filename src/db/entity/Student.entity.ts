@@ -24,7 +24,7 @@ export class Student {
   @Column()
   groupId!: number;
 
-  @ManyToOne(() => Group, { nullable: true })
+  @ManyToOne(() => Group, group => group.students)
   @JoinColumn({ name: 'groupId' })
   group?: Group;
 }
