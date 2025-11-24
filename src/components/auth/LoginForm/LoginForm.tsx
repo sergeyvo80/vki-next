@@ -52,16 +52,16 @@ const LoginForm = (): ReactNode => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+    <form className={styles.LoginForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.field}>
-        <label className={styles.label} htmlFor='email'>
+        <label className={styles.label} htmlFor="email">
           Email
         </label>
         <input
-          id='email'
+          id="email"
           className={styles.input}
-          type='email'
-          placeholder='admin@example.com'
+          type="email"
+          placeholder="admin@example.com"
           {...register('email', { required: 'Email обязателен' })}
         />
         {errors.email?.message && (
@@ -70,14 +70,14 @@ const LoginForm = (): ReactNode => {
       </div>
 
       <div className={styles.field}>
-        <label className={styles.label} htmlFor='password'>
+        <label className={styles.label} htmlFor="password">
           Пароль
         </label>
         <input
-          id='password'
+          id="password"
           className={styles.input}
-          type='password'
-          placeholder='••••••••'
+          type="password"
+          placeholder="••••••••"
           {...register('password', { required: 'Пароль обязателен' })}
         />
         {errors.password?.message && (
@@ -86,12 +86,13 @@ const LoginForm = (): ReactNode => {
       </div>
 
       <div className={styles.actions}>
-        <button className={styles.button} type='submit' disabled={isSubmitting}>
+        <button className={styles.button} type="submit" disabled={isSubmitting}>
           {isSubmitting ? 'Загрузка...' : 'Войти'}
         </button>
         <p className={styles.hint}>
           После успешной авторизации токен сохраняется в localStorage по ключу
-          <code>vki-token</code>.
+          <code>vki-token</code>
+          .
         </p>
       </div>
 
@@ -102,4 +103,3 @@ const LoginForm = (): ReactNode => {
 };
 
 export default LoginForm;
-

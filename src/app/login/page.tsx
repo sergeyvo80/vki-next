@@ -1,4 +1,4 @@
-import LoginForm from '@/components/Auth/LoginForm';
+import LoginForm from '@/components/auth/LoginForm/LoginForm';
 import Page from '@/components/layout/Page/Page';
 import { META_DESCRIPTION, META_TITLE } from '@/constants/meta';
 import { type Metadata } from 'next/types';

@@ -73,7 +73,7 @@ const eslintConfig = [
           fixStyle: 'inline-type-imports',
         },
       ],
-      '@typescript-eslint/no-unused-vars': 'warn', // Or "error"
+      '@typescript-eslint/no-unused-vars': 'warn', // Or "error"/
 
       // Override JS rules where needed for TS
       'no-undef': 'off', //  typescript handles this
