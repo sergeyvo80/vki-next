@@ -1,5 +1,5 @@
 import { studentService } from '@/services/StudentService';
-import { type NextApiRequest } from 'next/types';
+import { type NextRequest } from 'next/server';
 
 export async function GET(): Promise<Response> {
   const students = await studentService.getStudents();
@@ -11,7 +11,7 @@ export async function GET(): Promise<Response> {
   });
 };
 
-export async function POST(req: NextApiRequest): Promise<Response> {
+export async function POST(req: NextRequest): Promise<Response> {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const student = await req.json();

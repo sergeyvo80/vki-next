@@ -1,9 +1,6 @@
-import { dbInit } from '@/db/AppDataSource';
 import { groupService } from '@/services/GroupService';
 
-export async function POST(): Promise<Response> {
-  await dbInit();
-
+export async function GET(): Promise<Response> {
   const newGroups = [];
   for (let i = 1; i <= 4; i++) {
     const newGroup = await groupService.addGroup({

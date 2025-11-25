@@ -59,7 +59,7 @@ const eslintConfig = [
 
       // Best Practices
       'eqeqeq': 'error', // Enforce strict equality === and !==
-      'no-unused-vars': 'warn', // Or "error"
+      // 'no-unused-vars': 'warn', // Or "error"
       'no-shadow': 'off', // Typescript handles shadowing better.
       '@typescript-eslint/no-shadow': 'error', //  Enable shadowing rules.
       '@typescript-eslint/explicit-function-return-type': 'error',
@@ -73,7 +73,7 @@ const eslintConfig = [
           fixStyle: 'inline-type-imports',
         },
       ],
-      '@typescript-eslint/no-unused-vars': 'warn', // Or "error"/
+      // '@typescript-eslint/no-unused-vars': 'warn', // Or "error"/
 
       // Override JS rules where needed for TS
       'no-undef': 'off', //  typescript handles this
@@ -91,32 +91,8 @@ const eslintConfig = [
           },
           multilineDetection: 'brackets',
         },
-
       ],
     },
-
-    // rules: {
-    //   indent: ['warn', 2],
-    //   quotes: ['warn', 'single'],
-    //   semi: ['warn', 'always'],
-    //   'comma-spacing': ['warn', { before: false, after: true }],
-    //   'import/order': [
-    //     'warn',
-    //     {
-    //       'newlines-between': 'always',
-    //       groups: [
-    //         'builtin',
-    //         'external',
-    //         'internal',
-    //         'parent',
-    //         'sibling',
-    //         'index',
-    //         'object',
-    //         'type',
-    //       ],
-    //     },
-    //   ],
-    // }
   }),
 ];
 

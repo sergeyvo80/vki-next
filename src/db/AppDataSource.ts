@@ -8,9 +8,12 @@ import { hashPassword } from '@/utils/password';
 const AppDataSource = new DataSource({
   type: 'sqlite',
   database: process.env.DB ?? './db/vki-web.db', // Path to your SQLite database file
-  synchronize: true, // Auto-create schema on startup (use with caution in production)
+  // synchronize: true, // Auto-create schema on startup (use with caution in production)
+  synchronize: process.env.NODE_ENV !== 'production', // Отключаем в production
+  migrationsRun: process.env.NODE_ENV === 'production', // Включаем миграции в production
   logging: false,
   entities: [Student, Group, User],
+  // namingStrategy: new SnakeNamingStrategy(),
 });
 
 // to initialize the initial connection with the database, register all entities
@@ -45,7 +48,7 @@ const ensureSeedUsers = async (): Promise<void> => {
     },
   ];
 
-  await Promise.all(defaultUsers.map(async user => {
+  await Promise.all(defaultUsers.map(async (user) => {
     const exists = await repository.findOne({
       where: { email: user.email },
     });

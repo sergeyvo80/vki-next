@@ -53,7 +53,7 @@ export const signJwt = (payload: JwtPayload, expiresInSeconds: number = 60 * 60)
 };
 
 // Валидация access token
-export const verifyAccessToken = (token?: string): any => {
+export const verifyAccessToken = (token?: string): string | JwtPayload | null => {
   if (!token) {
     return null;
   }
@@ -61,6 +61,7 @@ export const verifyAccessToken = (token?: string): any => {
     return jwt.verify(token, getJwtSecret());
   }
   catch (error) {
+    console.error(error);
     return null;
   }
-}
+};

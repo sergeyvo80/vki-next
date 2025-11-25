@@ -89,7 +89,7 @@ const BarChart: React.FC<BarChartProps> = ({
           .style('font-weight', 'bold')
           .style('fill', '#333');
       })
-      .on('mouseout', function (event: MouseEvent, d: BarData) {
+      .on('mouseout', function () { // event: MouseEvent, d: BarData
         d3.select(this)
           .transition()
           .duration(200)

@@ -26,7 +26,6 @@ const LoginForm = (): ReactNode => {
     },
   });
 
-
   const onSubmit = async (values: LoginFormValues): Promise<void> => {
     setError(null);
     setSuccess(null);

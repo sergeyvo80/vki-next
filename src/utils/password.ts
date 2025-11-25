@@ -20,4 +20,3 @@ export const hashPassword = (password: string): string => {
 export const verifyPassword = (password: string, hashedPassword: string): boolean => {
   return hashPassword(password) === hashedPassword;
 };
-

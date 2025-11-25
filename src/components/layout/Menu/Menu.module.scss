@@ -1,15 +1,88 @@
+@use '../../../styles/main';
+
 .Menu {
+
+}
+
+.nav {
   display: flex;
   background-color: var(--background2);
   justify-content: flex-start;
   gap: 40px;
   align-items: center;
-  font-size: 18px;
   color: var(--color);
+  position: relative;
+
+  @media #{main.$mob} {
+    font-size: main.vwMax(24px);
+    gap: main.vwMax(20px);
+  }
+
   a {
     color: var(--color);
     text-decoration: none;
   }
+  z-index: 200;
+
+  @media #{main.$mob} {
+    flex-direction: column;
+    display: none;
+    margin-top: main.vwMax(100px);
+    margin-left: main.vwMax(70px);
+  }
+
+  &--open {
+    @media #{main.$mob} {
+      display: flex;
+    }
+  }
+}
+
+.burger {
+  cursor: pointer;
+  display: none;
+
+  @media #{main.$mob} {
+    font-size: main.vwMax(30px);
+    display: flex;
+  }
+}
+
+.close {
+  display: none;
+  z-index: 200;
+  cursor: pointer;
+
+  @media #{main.$mob} {
+    font-size: main.vwMax(30px);
+    display: flex;
+    position: absolute;
+    top: main.vwMax(10px);
+    right: main.vwMax(20px);
+
+  }
+}
+
+.menuOverlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden !important;
+  background-color: var(--background2);
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  z-index: 99;  
+  display: none;
+
+  &--open {
+    // display: block;
+
+    @media #{main.$mob} {
+      display: block;
+    }
+  }  
 }
 
 .linkActive {

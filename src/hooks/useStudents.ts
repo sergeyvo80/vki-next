@@ -105,7 +105,8 @@ const useStudents = (): StudentsHookInterface => {
       queryClient.setQueryData<StudentInterface[]>(['students'], context?.previousStudents);
     },
     // обновляем данные в случаи успешного выполнения mutationFn: async (student: StudentInterface) => addStudentApi(student)
-    onSuccess: async (newStudent, variables, { previousStudents, updatedStudents }) => {
+    // onSuccess: async (newStudent, variables, { previousStudents, updatedStudents }) => {
+    onSuccess: async () => {
       refetch();
       // обновляем кэш групп так как обновились студенты в группе
       queryClient.invalidateQueries({ queryKey: ['groups'] });

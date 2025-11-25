@@ -1,14 +1,13 @@
 import { studentService } from '@/services/StudentService';
 import { type NextRequest, NextResponse } from 'next/server';
-import { NextApiResponse, type NextApiRequest } from 'next/types';
 
 interface Params {
-  params: { id: number };
+  params: Promise<{ id: string }>;
 }
 
-export async function DELETE(req: NextApiRequest, { params }: Params): Promise<Response> {
+export async function DELETE(req: NextRequest, { params }: Params): Promise<Response> {
   const p = await params;
-  const studentId = await p.id;
+  const studentId = parseInt(p.id);
   const deletedStudentId = await studentService.deleteStudent(studentId);
 
   return new Response(JSON.stringify({ deletedStudentId }), {

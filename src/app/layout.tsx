@@ -14,6 +14,7 @@ import '@/styles/globals.scss';
 import { META_DESCRIPTION, META_TITLE } from '@/constants/meta';
 import { getStudentsApi } from '@/api/studentsApi';
 import { verifyAccessToken } from '@/utils/jwt';
+// import UserInterface from '@/types/UserInterface';
 
 export const metadata: Metadata = {
   title: META_TITLE,
@@ -46,9 +47,9 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
     <TanStackQuery state={state}>
       <html lang="ru">
         <body>
-          <Header
-            userFromServer={userFromServer}
-          />
+          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+          {/* @ts-expect-error */}
+          <Header userFromServer={userFromServer} />
           <Main>
             <>{children}</>
           </Main>
