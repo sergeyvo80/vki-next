@@ -1,16 +1,22 @@
 [<<< назад](../README.md)
 
-## Работа с БД
+- [Работа с БД](#работа-с-бд)
+  - [Установить плагин](#установить-плагин)
+  - [Подключение к БД](#подключение-к-бд)
+  - [Выполнение запроса](#выполнение-запроса)
+  - [Так же можно использовать SQLite Browser - https://sqlitebrowser.org](#так-же-можно-использовать-sqlite-browser---httpssqlitebrowserorg)
 
-### Установить плагин
+# Работа с БД
+
+## Установить плагин
 
 ![database-client](pics/database-client.png)
 
-### Подключение к БД
+## Подключение к БД
 
 ![db-connect](pics/db-connect.png)
 
-### Выполнение запроса
+## Выполнение запроса
 
 ![sql1](pics/sql1.png)
 
@@ -18,6 +24,6 @@
 
 ![sql3](pics/sql3.png)
 
-### Так же можно использовать SQLite Browser - https://sqlitebrowser.org
+## Так же можно использовать SQLite Browser - https://sqlitebrowser.org
 
 Portable Version https://sqlitebrowser.org/blog/portableapp-for-3-12-0-release-now-available/

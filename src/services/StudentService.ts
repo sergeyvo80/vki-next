@@ -6,9 +6,10 @@ import getRandomFio from '@/utils/getRandomFio';
 export class StudentService {
   private get repository(): ReturnType<typeof AppDataSource.getRepository> {
     // Check if AppDataSource is initialized
-    if (!AppDataSource.isInitialized) {
-      throw new Error('AppDataSource is not initialized');
-    }
+    // if (!AppDataSource.isInitialized) {
+    //   throw new Error('AppDataSource is not initialized');
+    // }
+    // await dbInit();
     return AppDataSource.getRepository(Student);
   }
 
