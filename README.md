@@ -14,6 +14,7 @@
   - [Инструменты](#инструменты)
   - [SSR - Server Side Rendering, передача состояния на клиент](#ssr---server-side-rendering-передача-состояния-на-клиент)
   - [Vercel - создание облачной БД Postgres](#vercel---создание-облачной-бд-postgres)
+  - [Deployment (развертка проекта) на хостинге Vercel](#deployment-развертка-проекта-на-хостинге-vercel)
   - [Ссылки](#ссылки)
     - [HTML](#html)
     - [CSS](#css)
@@ -105,6 +106,8 @@ NEXT_PUBLIC_API="http://localhost:3000/api/"
 ## Vercel - создание облачной БД Postgres
 [читать по ссылке](docs/vercel-db.md)
 
+## Deployment (развертка проекта) на хостинге Vercel
+[читать по ссылке](docs/vercel-deploy.md)
 
 ## Ссылки
 
