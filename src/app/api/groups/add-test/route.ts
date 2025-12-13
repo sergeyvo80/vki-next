@@ -36,7 +36,8 @@ export async function GET(): Promise<Response> {
       if (!exists) {
         const newGroup: GroupInterface = await groupService.addGroup(group);
         newGroups.push(newGroup);
-      } else {
+      }
+      else {
         existGroups.push(exists);
       }
     }));
@@ -68,4 +69,3 @@ export async function GET(): Promise<Response> {
     }
   }
 }
-

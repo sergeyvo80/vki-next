@@ -1,7 +1,6 @@
 import type StudentInterface from '@/types/StudentInterface';
 import type GroupInterface from '@/types/GroupInterface';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { useImperativeHandle, forwardRef, useRef } from 'react';
 import styles from './AddStudent.module.scss';
 import useGroups from '@/hooks/useGroups';
 
@@ -11,26 +10,15 @@ interface Props {
   onAdd: (studentForm: FormFields) => void;
 }
 
-export interface AddStudentRef {
-  resetForm: () => void;
-}
-
-const AddStudent = forwardRef<AddStudentRef, Props>(({ onAdd }, ref): React.ReactElement => {
+const AddStudent = ({ onAdd }: Props): React.ReactElement => {
   const { groups } = useGroups();
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<FormFields>();
 
-  const onSubmit: SubmitHandler<FormFields> = studentForm => onAdd(studentForm);
-
-  useImperativeHandle(ref, () => ({
-    resetForm: () => {
-      reset();
-    },
-  }));
+  const onSubmit: SubmitHandler<FormFields> = (studentForm: FormFields): void => onAdd(studentForm);
 
   return (
     <div className={styles.AddStudent}>
@@ -73,8 +61,5 @@ const AddStudent = forwardRef<AddStudentRef, Props>(({ onAdd }, ref): React.Reac
 
     </div>
   );
-});
-
-AddStudent.displayName = 'AddStudent';
-
+};
 export default AddStudent;

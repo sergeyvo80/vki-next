@@ -81,7 +81,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     });
 
     return response;
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Login error:', error);
     return NextResponse.json(
       { message: 'Ошибка сервера при авторизации' },

@@ -5,9 +5,9 @@ export async function GET(request: Request): Promise<NextResponse> {
   try {
     const cookieHeader = request.headers.get('cookie');
     if (!cookieHeader) {
-      return NextResponse.json({ 
+      return NextResponse.json({
         isAuthenticated: false,
-        user: null 
+        user: null,
       });
     }
 
@@ -25,11 +25,12 @@ export async function GET(request: Request): Promise<NextResponse> {
       isAuthenticated: !!user,
       user,
     });
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Auth check error:', error);
-    return NextResponse.json({ 
+    return NextResponse.json({
       isAuthenticated: false,
-      user: null 
+      user: null,
     });
   }
 }
