@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import { signJwt } from '@/utils/jwt';
 import AppDataSource from '@/db/AppDataSource';
 import { User } from '@/db/entity/User.entity';
-import { dbInit } from '@/db/AppDataSource';
+import { dbInit, dbClose } from '@/db/AppDataSource';
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
@@ -87,5 +87,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       { message: 'Ошибка сервера при авторизации' },
       { status: 500 },
     );
+  } finally {
+    // Закрываем соединение в serverless среде
+    if (process.env.NODE_ENV === 'production') {
+      await dbClose();
+    }
   }
 }

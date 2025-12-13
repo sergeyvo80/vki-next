@@ -11,13 +11,15 @@ const config: DataSourceOptions = {
     ? {
       type: 'postgres',
       url: process.env.POSTGRES,
-      ssl: true,
+      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
       connectTimeoutMS: timeout,
       extra: {
-        ssl: { rejectUnauthorized: false },
         connectionTimeoutMillis: timeout,
         query_timeout: timeout,
         idle_in_transaction_session_timeout: timeout,
+        // Для Vercel serverless functions
+        max: 1, // Максимум 1 соединение
+        min: 0, // Минимум 0 соединений
       },
     }
     : {
@@ -26,7 +28,7 @@ const config: DataSourceOptions = {
     }),
   synchronize: process.env.NODE_ENV !== 'production',
   migrationsRun: process.env.NODE_ENV === 'production',
-  logging: false,
+  logging: process.env.NODE_ENV !== 'production',
   entities: [Student, Group, User],
 };
 
@@ -42,7 +44,20 @@ export const dbInit = async (): Promise<void> => {
     console.log('AppDataSource.initialize');
   }
   catch (error) {
-    console.log(error);
+    console.error('Database initialization error:', error);
+    throw error; // Перебрасываем ошибку, чтобы роуты могли ее обработать
+  }
+};
+
+export const dbClose = async (): Promise<void> => {
+  try {
+    if (AppDataSource.isInitialized) {
+      await AppDataSource.destroy();
+      console.log('AppDataSource.destroy');
+    }
+  }
+  catch (error) {
+    console.error('Database close error:', error);
   }
 };
 
