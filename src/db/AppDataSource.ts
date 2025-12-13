@@ -7,10 +7,10 @@ import { User } from './entity/User.entity';
 const timeout = 30000;
 
 const config: DataSourceOptions = {
-  ...(process.env.POSTGRES || process.env.DATABASE_URL
+  ...(process.env.POSTGRES
     ? {
       type: 'postgres',
-      url: process.env.POSTGRES || process.env.DATABASE_URL,
+      url: process.env.POSTGRES,
       ssl: { rejectUnauthorized: false },
       connectTimeoutMS: timeout,
       extra: {
@@ -44,7 +44,8 @@ export const dbInit = async (): Promise<void> => {
     }
 
     console.log('Initializing database connection...');
-    console.log('Using URL:', (process.env.POSTGRES || process.env.DATABASE_URL)?.substring(0, 30) + '...');
+    console.log('POSTGRES env var available:', !!process.env.POSTGRES);
+    console.log('Using URL:', process.env.POSTGRES?.substring(0, 30) + '...');
 
     await AppDataSource.initialize();
     console.log('Database connection successful');
