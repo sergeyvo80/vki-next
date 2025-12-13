@@ -6,12 +6,23 @@ import { User } from './entity/User.entity';
 
 const timeout = 30000;
 
+// Определяем тип базы данных
+const isProduction = process.env.NODE_ENV === 'production';
+const hasPostgresUrl = process.env.POSTGRES || process.env.DATABASE_URL;
+
+console.log('Environment check:', {
+  NODE_ENV: process.env.NODE_ENV,
+  hasPostgres: !!process.env.POSTGRES,
+  hasDatabaseUrl: !!process.env.DATABASE_URL,
+  postgresUrl: process.env.POSTGRES ? 'SET' : 'NOT SET',
+});
+
 const config: DataSourceOptions = {
-  ...(process.env.POSTGRES
+  ...(hasPostgresUrl
     ? {
-      type: 'postgres',
-      url: process.env.POSTGRES,
-      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+      type: 'postgres' as const,
+      url: process.env.POSTGRES || process.env.DATABASE_URL,
+      ssl: isProduction ? { rejectUnauthorized: false } : false,
       connectTimeoutMS: timeout,
       extra: {
         connectionTimeoutMillis: timeout,
@@ -23,12 +34,12 @@ const config: DataSourceOptions = {
       },
     }
     : {
-      type: 'sqlite',
+      type: 'sqlite' as const,
       database: process.env.DB ?? './db/vki-web.db',
     }),
-  synchronize: process.env.NODE_ENV !== 'production',
-  migrationsRun: process.env.NODE_ENV === 'production',
-  logging: process.env.NODE_ENV !== 'production',
+  synchronize: !isProduction,
+  migrationsRun: isProduction,
+  logging: !isProduction,
   entities: [Student, Group, User],
 };
 
