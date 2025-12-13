@@ -1,16 +1,12 @@
 import { deleteStudentDb } from '@/db/studentDb';
-import { type NextApiRequest } from 'next/types';
+import { type NextRequest } from 'next/server';
 import { dbInit, dbClose } from '@/db/AppDataSource';
 
-interface Params {
-  params: { id: number };
-}
-
-export async function DELETE(req: NextApiRequest, { params }: Params): Promise<Response> {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }): Promise<Response> {
   try {
     await dbInit();
-    const p = await params;
-    const studentId = await p.id;
+    const { id } = await params;
+    const studentId = parseInt(id, 10);
     const deletedStudentId = await deleteStudentDb(studentId);
 
     return new Response(JSON.stringify({ deletedStudentId }), {
