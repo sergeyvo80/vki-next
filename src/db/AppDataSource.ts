@@ -55,11 +55,11 @@ export const dbInit = async (): Promise<void> => {
     await queryRunner.release();
     console.log('Database test query successful');
   }
-  catch (error) {
+  catch (error: unknown) {
     console.error('=== DATABASE ERROR ===');
-    console.error('Error type:', error?.constructor?.name);
-    console.error('Error message:', error?.message);
-    console.error('Error code:', error?.code);
+    console.error('Error type:', error instanceof Error ? error.constructor.name : 'Unknown');
+    console.error('Error message:', error instanceof Error ? error.message : 'Unknown error');
+    console.error('Error code:', error instanceof Error && 'code' in error ? (error as any).code : 'No code');
     console.error('Full error:', error);
     console.error('===================');
     throw error;
