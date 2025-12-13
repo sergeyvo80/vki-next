@@ -31,7 +31,8 @@ export async function GET(): Promise<Response> {
       if (!exists) {
         await repository.save(repository.create(user));
         newUsers++;
-      } else {
+      }
+      else {
         existUsers++;
       }
     }));
