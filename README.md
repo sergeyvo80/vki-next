@@ -117,14 +117,15 @@ NEXT_PUBLIC_API="http://localhost:3000/api/"
 - [Глобальные атрибуты](https://doka.guide/html/global-attrs/)
 - [ARIA states and properties (attributes)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes)
 - [Рендеринг WEB-страницы](https://habr.com/ru/articles/224187/)
-
 - [JavaScript, отдохни! Делаем интерактивные вещи на HTML и CSS](https://habr.com/ru/companies/reksoft/articles/950918/)
+- [Заменяем JS обычным HTML](https://habr.com/ru/articles/981298/)
 
 ### CSS
 - [CSS дока](https://doka.guide/css/)
 - [Вам больше не нужен JavaScript](https://habr.com/ru/articles/946498/)
 - [CSS свойство will-change](https://developer.mozilla.org/ru/docs/Web/CSS/will-change)
 - [Современный CSS: что важно знать в 2025 году](https://habr.com/ru/companies/timeweb/articles/951540/)
+- [Новое слово в CSS: Grid Lanes](https://habr.com/ru/articles/979374/)
 
 ### Критические этапы рендеринга (Critical Rendering Path - CRP)
 - [Как браузер рисует страницы](https://doka.guide/tools/how-the-browser-creates-pages/)
